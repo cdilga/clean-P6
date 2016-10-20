@@ -1,0 +1,5 @@
+fits/**
+out/**
+*.fits
+*.swp
+*.*~
