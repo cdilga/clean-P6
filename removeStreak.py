@@ -24,15 +24,17 @@ for filename in filelist:
     print 'processing ' + filename
     for i in range(len(hdulist[0].data[579])):
         hdulist[0].data[i][target] = (hdulist[0].data[i][target+1] + hdulist[0].data[i][target-1]) / 2
-        hdulist[0].data = median_filter(hdulist[0].data, size=3)
+    hdulist[0].data = median_filter(hdulist[0].data, size=3)
     filename = filename.replace(directory, '')
+    ensureExists(outdir)
+    hdulist.writeto(outfilename)
     outfilename = outdir + filename + lineRemovedString + '.fits'
-    if os.path.exists(outdir):
-        hdulist.writeto(outfilename)
-    else:
-        os.mkdir(outdir)
-        hdulist.writeto(outfilename)
+    
 
 #print hdulist[0].data[579][0]
     
 #hdulist = fits.open('fits/Initial Cyg X-1 P6_1325181_B_001.fits')
+
+def ensureExists(directory):
+    if (!os.path.exists(directory)):
+        os.mkdir(directory)
