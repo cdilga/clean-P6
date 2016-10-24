@@ -32,6 +32,8 @@ for filename in filelist:
     filename = filename.replace(directory, '')
     ensureExists(outdir)
     outfilename = outdir + filename + lineRemovedString + '.fits'
+    if os.path.exists(outfilename):
+        os.remove(outfilename)
     hdulist.writeto(outfilename)
     
 
