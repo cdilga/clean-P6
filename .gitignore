@@ -1,6 +1,5 @@
-fits/**
 out/**
-*.fits
+*.ini
 *.swp
 *.*~
 *.xlsb*
