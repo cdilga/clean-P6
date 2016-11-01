@@ -9,15 +9,15 @@ import glob
 from scipy.ndimage import median_filter
 import os
 
-directory = '.\\fits'
-outdir = '.\\outfits'
+directory = str(raw_input('(.\\fits)') or '.\\fits')
+outdir = str(raw_input('(.\\outfits)') or '.\\outfits')
 
 target = 579
 lineRemovedString = '-line-removed'
 
-def ensureExists(directory):
-    if not os.path.exists(directory):
-        os.mkdir(directory)
+def ensureExists(ensuredir):
+    if not os.path.exists(ensuredir):
+        os.mkdir(ensuredir)
 
 filelist = glob.glob(directory + '\\*.fits')
 if len(filelist) == 0:
